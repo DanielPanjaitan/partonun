@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  partonun:
+    image: partonun:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    container_name: "partonun"
+    working_dir: /usr/src
+    volumes:
+      - .:/usr/src
+      - mysql_data:/var/lib/mysql/
+    ports:
+      - "${MYSQL_PORT}:3306"
+    networks:
+      - default
+      - bridge-network
+networks:
+  default:
+    driver: bridge
+  bridge-network:
+    external: true
+volumes:
+  mysql_data:
