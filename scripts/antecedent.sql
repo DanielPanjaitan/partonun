@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS parmahan_database; 
+GRANT ALL PRIVILEGES ON parmahan_database.* TO 'user'@'%' IDENTIFIED BY '12345678'; 
 USE parmahan_database;
 CREATE TABLE transaksi(
    TRX_ID VARCHAR(10) NOT NULL ,
